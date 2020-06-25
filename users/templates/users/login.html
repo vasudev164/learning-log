@@ -1,4 +1,8 @@
-<h1>Login</h1>
+{% extends "learning_logs/base.html" %}
+{% block header %}
+<h1>Login to your account</h1>
+{% endblock %}
+{% block content %}
 {% if message %}
     <div>
         {{ message }}
@@ -6,7 +10,8 @@
 {% endif %}
 <form action="{% url 'users:login' %}" method="post">
     {% csrf_token %}
-    <p><input name="username" type="text" placeholder="username"/></p>
-    <p><input name="password" type="password" placeholder="password"/></p>
-    <p><input type="submit" value="Login"/></p>
+    <p><input name="username" type="text" placeholder="username" class="form-control"/></p>
+    <p><input name="password" type="password" placeholder="password" class="form-control"/></p>
+    <p><input type="submit" value="Login" class="btn btn-primary"/></p>
 </form>
+{% endblock %}

@@ -13,9 +13,12 @@ def index(request):
 def signup(request):
     user_form = CreateUserForm()
     if request.method == 'POST':
-        user_form = CreateUserForm(request.POST)
+        user_form = CreateUserForm(data=request.POST)
         if user_form.is_valid():
             new_user = user_form.save()
+            # set_password method will hash the password and this step is very very essential
+            new_user.set_password(new_user.password)
+            new_user.save()
             user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
             if user is not None:
                 login(request, user)
