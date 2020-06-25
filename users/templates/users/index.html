@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learning logs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>have an account : <a href="{% url 'users:login' %}" class="btn btn-primary">login</a></h1>
+        </div>
+        <div class="jumbotron">
+            <h1>Don't have an account : <a href="{% url 'users:signup' %}" class="btn btn-primary">signup</a></h1>
+        </div>
+    </div>
+</body>
+</html>
