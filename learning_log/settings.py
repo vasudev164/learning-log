@@ -25,7 +25,7 @@ SECRET_KEY = 'wh@s-e_j)*3=kfe=e=650)7dw0%(xub^5m0@!+3j!d!^kwxu(h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['vasudevll.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['vasudevll.herokuapp.com', 'vasudevllog.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.static',
     # my apps
     'learning_logs',
     'users.apps.UsersConfig',
@@ -79,11 +79,8 @@ WSGI_APPLICATION = 'learning_log.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -133,29 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles"), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/users/login'
-
-# Heroku settings
-if os.getcwd() == '/app':
-    import dj_database_url
-    import os
-
-    DATABASES = {'default': dj_database_url.config(
-        default='postgres://localhost')}
-    # Honor the 'X-Forwarded-Proto' header for request.is_secure().
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-    # Allow all host headers.
-    ALLOWED_HOSTS = ['*']
-
-    # Static asset configuration
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
