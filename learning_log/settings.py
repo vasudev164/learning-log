@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.static',
+    'django.contrib.staticfiles',
     # my apps
     'learning_logs',
     'users.apps.UsersConfig',
